@@ -11,6 +11,7 @@ namespace GraphLibrary
     {
         BaseVertex connectsTo;
         string validOnCondition;
+        string edgeText;
 
         /// <summary>
         /// Creates a new Edge with the given target Vertex and condition
@@ -21,6 +22,19 @@ namespace GraphLibrary
         {
             connectsTo = nextVertex;
             validOnCondition = condition;
+            edgeText = String.Empty;
+        }
+        /// <summary>
+        /// Creates a new Edge with the given target Vertex and condition
+        /// </summary>
+        /// <param name="nextVertex">The vertex pointed to by this edge.  </param>
+        /// <param name="condition">The condition which must be true for this vertex to be valid.</param>
+        /// <param name="edgeText">The text to show on for this edge</param>
+        public Edge(BaseVertex nextVertex, string condition, string edgeText)
+        {
+            connectsTo = nextVertex;
+            validOnCondition = condition;
+            this.edgeText = edgeText;
         }
 
         /// <summary>
@@ -37,7 +51,6 @@ namespace GraphLibrary
                 connectsTo = value;
             }
         }
-
         /// <summary>
         /// The condition which must be met for the edge to be valid.  
         /// </summary>
@@ -51,6 +64,13 @@ namespace GraphLibrary
             {
                 validOnCondition = value;
             }
+        }
+        /// <summary>
+        /// The text displayed on the edge of this graph
+        /// </summary>
+        public string EdgeText
+        {
+            get { return edgeText; }
         }
 
         public override bool Equals(object obj)

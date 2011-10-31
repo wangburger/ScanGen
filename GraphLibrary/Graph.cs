@@ -67,5 +67,38 @@ namespace GraphLibrary
             foreach (BaseVertex vtx in vertices)
                 vtx.RemoveConnections(toRemove);
         }
+
+        /// <summary>
+        /// Stores this graph in the DOT format to show in graphviz
+        /// </summary>
+        /// <param name="graphName">The name of this graph.</param>
+        /// <returns></returns>
+        public String ToDOT(String graphName)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("digraph ");
+            sb.Append(graphName);
+            sb.Append("{\n");
+            foreach (BaseVertex vertex in vertices)
+            {
+                foreach (Edge edge in vertex.Connections)
+                {
+                    //label format
+                    //\t v1 -> v2 [label="<edge text here>"]; \n
+
+                    sb.Append("\t ");
+                    sb.Append(vertex.Name);
+                    sb.Append(" -> ");
+                    sb.Append(edge.Connection.Name);
+                    sb.Append(" [label=\"");
+                    sb.Append(edge.EdgeText);
+                    sb.Append("\"];\n");
+                }
+            }
+            sb.Append("}");
+
+            return sb.ToString();
+        }
+
     }
 }

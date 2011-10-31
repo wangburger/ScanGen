@@ -1,0 +1,4 @@
+To visualize a graph:
+1. Download graphviz for your os: http://www.graphviz.org/Download..php
+2. Call .ToDOT() on a graph to get the .DOT format for a graph
+3. Paste the DOT text into a blank graphviz window and click Layout to see the graph
